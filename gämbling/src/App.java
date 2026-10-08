@@ -90,8 +90,14 @@ public class App {
             {
             System.out.println("Aseta panos");
             panos = in.nextLine();
+            if (!panos.equals("") && Integer.parseInt(panos) > raha)
+            {
+                System.out.println("Ei tarpeeksi saldoa");
+            }
             }
             while (panos.equals("") || Integer.parseInt(panos) > raha);
+
+
         }
 
         
