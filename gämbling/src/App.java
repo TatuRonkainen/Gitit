@@ -6,6 +6,7 @@ public class App {
         Scanner in = new Scanner(System.in);
         Random r = new Random();
 
+        // Pelaajan aloitussaldo
         int raha = 10;
         String panos;
         String input;
@@ -15,11 +16,13 @@ public class App {
         System.out.println("Aseta panos");
         panos = in.nextLine();
 
+        // Pelisilmukka yksi kierros per toisto
         do {
             int luku1;
             int luku2;
             int luku3;
-
+            
+            // Arvotaan numero 1-10
             luku1 = r.nextInt(10) + 1;
             luku2 = r.nextInt(10) + 1;
             luku3 = r.nextInt(10) + 1;
@@ -32,8 +35,10 @@ public class App {
             System.out.println(luku3);
             System.out.println("**********");
 
+            // Vähennetään panos saldosta
             raha = raha - Integer.parseInt(panos);
 
+            // Lasketaan monta seiskaa arvottiin
             int seiskoja = 0;
 
             if (luku1 == 7) {
@@ -45,6 +50,7 @@ public class App {
             if (luku3 == 7) {
                 seiskoja++;
             }
+            // Voitot: 1 Seiska *3, 2 Seiskaa *6, 3 Seiskaa *100
             if (seiskoja == 1) {
                 raha = raha + (3 * Integer.parseInt(panos));
                 System.out.println("Voitit " + (3 * Integer.parseInt(panos)) + " €");
@@ -58,6 +64,7 @@ public class App {
                 System.out.println("JACKPOT voitit " + (100 * Integer.parseInt(panos)) + " €");
 
             }
+            // Jos rahat loppuu peli loppuu
             if (raha <= 0) {
                 System.out.println("Saldo loppu");
                 break;
@@ -68,6 +75,8 @@ public class App {
             input = in.nextLine();
 
             if (!input.equals("stop")) {
+                
+                // Kysytään uutta panosta, ja tarkastetaan ettei kenttä ole tyhjä tai suurempi kuin saldo.
                 do {
                     System.out.println("Aseta panos");
                     panos = in.nextLine();
